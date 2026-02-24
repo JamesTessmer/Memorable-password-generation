@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Super Mega Password Generator 5000</title>
+</head>
+<body>
+
+    <h1>Answer these Questions</h1>
+
+    <form method="POST">
+        {% for q in questions %}
+            <label>{{ q.label }}</label><br>
+            <input type="text" name="{{ q.name }}"><br><br>
+        {% endfor %}
+
+        <button type="submit" name="action" value="submit">
+            Submit
+        </button>
+
+        <button type="submit" name="action" value="reset">
+            Reset
+        </button>
+    </form>
+    <!-- For now just show the answers to the questions as a test to make sure everything else works -->
+    {% if answers %}
+        <h2>Your Answers:</h2>
+        {% for key, value in answers.items() %}
+            <p>{{ key }}: {{ value }}</p>
+        {% endfor %}
+    {% endif %}
+
+</body>
+</html>
