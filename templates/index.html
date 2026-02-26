@@ -21,12 +21,10 @@
             Reset
         </button>
     </form>
-    <!-- For now just show the answers to the questions as a test to make sure everything else works -->
-    {% if answers %}
-        <h2>Your Answers:</h2>
-        {% for key, value in answers.items() %}
-            <p>{{ key }}: {{ value }}</p>
-        {% endfor %}
+    <!--display the password after user hits submit -->
+    {% if password %}
+        <h2>Your password:</h2>
+        <p>{{ password }}</p>
     {% endif %}
 
 </body>
