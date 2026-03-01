@@ -2,30 +2,76 @@
 <html>
 <head>
     <title>Super Mega Password Generator 5000</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;           
+            display: flex;
+            justify-content: center;    /* center horizontally */
+            /*align-items: center;        /* center vertically */
+            font-family: Arial, sans-serif;
+        }
+    
+        .container {
+            text-align: center;
+        }
+        .settings {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+    }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <!-- Settings for complexity and number of questions -->
+        <div class="settings">
+            <h3>Settings</h3>
 
-    <h1>Answer these Questions</h1>
+            <form method="POST">
+                <label>Number of Questions:</label><br>
+                <select name="num_questions" required>
+                    {% for i in range(1, 11) %}
+                        <option value="{{ i }}" {% if i == num_questions %}selected{% endif %}>{{ i }}</option>
+                    {% endfor %}
+                </select><br><br>
+            
+                <label>Password Complexity (1–10):</label><br>
+                <select name="complexity" required>
+                    {% for i in range(1, 11) %}
+                        <option value="{{ i }}" {% if i == complexity %}selected{% endif %}>{{ i }}</option>
+                    {% endfor %}
+                </select><br><br>
+            
+                <button type="submit" name="action" value="update_settings">
+                    Update Settings
+                </button>
+            </form>
+        </div>
 
-    <form method="POST">
-        {% for q in questions %}
-            <label>{{ q.label }}</label><br>
-            <input type="text" name="{{ q.name }}"><br><br>
-        {% endfor %}
+        <!-- Display questions -->
+        <form method="POST">
+            {% for q in questions %}
+                <label>{{ q.label }}</label><br>
+                <input type="text" name="{{ q.id }}"><br><br>
+            {% endfor %}
 
-        <button type="submit" name="action" value="submit">
-            Submit
-        </button>
+            <!-- Submit answers and generate password -->
+            <button type="submit" name="action" value="submit">
+                Submit
+            </button>
 
-        <button type="submit" name="action" value="reset">
-            Reset
-        </button>
-    </form>
-    <!--display the password after user hits submit -->
-    {% if password %}
-        <h2>Your password:</h2>
-        <p>{{ password }}</p>
-    {% endif %}
+            <!-- Reset inputs and pick new questions -->
+            <button type="submit" name="action" value="reset">
+                Reset
+            </button>
+        </form>
+        <!--display the password after user hits submit -->
+        {% if password %}
+            <h2>Your generated password:</h2>
+            <p>{{ password }}</p>
+        {% endif %}
+    </div>
 
 </body>
 </html>

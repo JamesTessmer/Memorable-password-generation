@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session
 from dotenv import load_dotenv
+import json
 import random
 import os
 #
@@ -10,49 +11,87 @@ app = Flask(__name__)
 
 load_dotenv()
 app.secret_key = os.getenv("FLASK_APP_KEY") #you'll need to make a .env file with this variable
-all_questions = [
-    {"label": "What is your name?", "name": "name"},
-    {"label": "What is your favorite color?", "name": "color"},
-    {"label": "What is your favorite food?", "name": "food"},
-    {"label": "What is the street you live on?", "name": "street"},
-    {"label": "Where are you from?", "name": "location"},
-]
+
+#read in questions
+questions = []
+with open("questions.json", "r") as f:
+    data = json.load(f)
+    questions = list(data.values())
+
 join_chars = ['-','_','+','&','$','#','@','!','%','^','*','=']
 
     
-    #randomly select x questions to show. We can probably prompt the user for
-    # a number of words they want to have in the passphrase and select that many questions
-def generate_questions():
-    return random.sample(all_questions, 3)
+#randomly select x questions to show based on user input
+def generate_questions(num_questions: int):
+    return random.sample(questions, num_questions)
 
-def generate_password(answers: dict):
+#generate a password based on user answers to questions, with complexity adding varying characters
+def generate_password(answers: dict, complexity: int):
     password = ""
     for val in answers.values():
         password = password + random.choice(join_chars) + val
+    #replace white space characters since most websites, pages, etc. don't allow them
+    password = password.replace(" ","")
     return password
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    if "num_questions" not in session:
+        session["num_questions"] = 3
+    if "complexity" not in session:
+        session["complexity"] = 1
     if "questions" not in session:
-        session["questions"] = generate_questions()
+        session["questions"] = generate_questions(3)
 
     questions = session["questions"]
 
     if request.method == "POST":
 
-        # If Reset button was pressed we show new questions
-        if request.form.get("action") == "reset":
-            session["questions"] = generate_questions()
+        #update complexity and number of questions
+        if request.form.get("action") == "update_settings":
+            num_q = request.form.get("num_questions")
+            complexity = request.form.get("complexity")
+            #see if the values entered were integers (They may not be on app start up)
+            existing_num_q = session["num_questions"]
+            try:
+                session["num_questions"] = int(num_q) if num_q else 3
+            except ValueError:
+                session["num_questions"] = 3
+
+            try:
+                session["complexity"] = int(complexity) if complexity else 1
+            except ValueError:
+                session["complexity"] = 1
+
+            # Regenerate question only if the number of questions field changed
+            if session['num_questions'] != existing_num_q:
+                print(type(num_q))
+                print(type(existing_num_q))
+                session["questions"] = generate_questions(session["num_questions"])
             return render_template("index.html",
                                    questions=session["questions"],
-                                   answers=None)
+                                   num_questions=session["num_questions"],
+                                   complexity=session["complexity"],
+                                   password=None)
+
+
+        # If Reset button was pressed we show new questions
+        elif request.form.get("action") == "reset":
+            session["questions"] = generate_questions(session["num_questions"])
+            return render_template("index.html",
+                                   questions=session["questions"],
+                                   num_questions=session["num_questions"],
+                                   complexity=session["complexity"],
+                                   password=None)
 
         # If Submit button was pressed we process answers in the text boxes
-        if request.form.get("action") == "submit":
-            answers = {q["name"]: request.form.get(q["name"]) for q in questions}
-            password = generate_password(answers)
+        elif request.form.get("action") == "submit":
+            answers = {q["id"]: request.form.get(q["id"]) for q in questions}
+            password = generate_password(answers, session['complexity'])
             return render_template("index.html",
-                                   questions=questions,
+                                   questions=session["questions"],
+                                   num_questions=session["num_questions"],
+                                   complexity=session["complexity"],
                                    password=password)
 
     return render_template("index.html",

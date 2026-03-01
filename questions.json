@@ -1,0 +1,30 @@
+{
+    "question_1": {
+      "label": "What is your name?",
+      "id": "id"
+    },
+    "question_2": {
+      "label": "What is your favorite color?",
+      "id": "color"
+    },
+    "question_3": {
+      "label": "What is your favorite food?",
+      "id": "food"
+    },
+    "question_4": {
+      "label": "What is the street you live on?",
+      "id": "street"
+    },
+    "question_5": {
+      "label": "Where are you from?",
+      "id": "location"
+    },
+    "question_6": {
+        "label": "What is a bird you like?",
+        "id": "bird"
+    },
+    "question_7": {
+        "label": "What is your dream job?",
+        "id": "job"
+    }
+  }
