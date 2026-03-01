@@ -3,10 +3,7 @@ from dotenv import load_dotenv
 import json
 import random
 import os
-#
-# To do, on startup show a 'form' that prompts the user for the number of questions, and level of complexity they want in the password
-# Add a button that lets users go back to that form
-#
+
 app = Flask(__name__)
 
 load_dotenv()
@@ -19,7 +16,6 @@ with open("questions.json", "r") as f:
     questions = list(data.values())
 
 join_chars = ['-','_','+','&','$','#','@','!','%','^','*','=']
-
     
 #randomly select x questions to show based on user input
 def generate_questions(num_questions: int):
@@ -37,11 +33,11 @@ def generate_password(answers: dict, complexity: int):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if "num_questions" not in session:
-        session["num_questions"] = 3
+        session["num_questions"] = 1
     if "complexity" not in session:
         session["complexity"] = 1
     if "questions" not in session:
-        session["questions"] = generate_questions(3)
+        session["questions"] = generate_questions(1)
 
     questions = session["questions"]
 
@@ -54,9 +50,9 @@ def index():
             #see if the values entered were integers (They may not be on app start up)
             existing_num_q = session["num_questions"]
             try:
-                session["num_questions"] = int(num_q) if num_q else 3
+                session["num_questions"] = int(num_q) if num_q else 1
             except ValueError:
-                session["num_questions"] = 3
+                session["num_questions"] = 1
 
             try:
                 session["complexity"] = int(complexity) if complexity else 1
@@ -65,8 +61,6 @@ def index():
 
             # Regenerate question only if the number of questions field changed
             if session['num_questions'] != existing_num_q:
-                print(type(num_q))
-                print(type(existing_num_q))
                 session["questions"] = generate_questions(session["num_questions"])
             return render_template("index.html",
                                    questions=session["questions"],
@@ -74,8 +68,7 @@ def index():
                                    complexity=session["complexity"],
                                    password=None)
 
-
-        # If Reset button was pressed we show new questions
+        # If Reset button was pressed then regenerate questions and remove password
         elif request.form.get("action") == "reset":
             session["questions"] = generate_questions(session["num_questions"])
             return render_template("index.html",

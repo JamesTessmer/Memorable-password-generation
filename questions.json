@@ -20,11 +20,55 @@
       "id": "location"
     },
     "question_6": {
-        "label": "What is a bird you like?",
-        "id": "bird"
+        "label": "What is an animal you like?",
+        "id": "animal"
     },
     "question_7": {
         "label": "What is your dream job?",
         "id": "job"
+    },
+    "question_8": {
+        "label": "What is your favorite hobby?",
+        "id": "hobby"
+    },
+    "question_9": {
+        "label": "What is a favorite movie or TV show?",
+        "id": "media"
+    },
+    "question_10": {
+        "label": "What is your favorite book?",
+        "id": "book"
+    },
+    "question_11": {
+        "label": "What is your favorite season?",
+        "id": "season"
+    },
+    "question_12": {
+        "label": "What is a memorable place you have visited?",
+        "id": "memorable_place"
+    },
+    "question_13": {
+        "label": "What is your favorite song or musician?",
+        "id": "music"
+    },
+    "question_14": {
+        "label": "What is a nickname you've had?",
+        "id": "nickname"
+    },
+    "question_15": {
+        "label": "What is a skill you’d like to learn?",
+        "id": "skill"
+    },
+    "question_16": {
+        "label": "What is your favorite dessert?",
+        "id": "dessert"
+    },
+    "question_17": {
+        "label": "What is your favorite sport or activity?",
+        "id": "sport"
+    },
+    "question_18": {
+        "label": "What is your favorite quote or saying?",
+        "id": "quote"
     }
   }
