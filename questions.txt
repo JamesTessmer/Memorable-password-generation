@@ -1,0 +1,108 @@
+What is your favorite movie?
+List characters from your favorite movie.
+What is your favorite music artist called?
+What is your least favorite month?
+What is your favorite movie genre?
+Who is your favorite movie director?
+Who is your favorite fictional villain?
+Who is your favorite fictional hero?
+What is your favorite TV show?
+What is your favorite streaming platform?
+What is your favorite animated movie?
+What is your favorite trilogy?
+Who is your favorite actor/actress?
+What is your favorite book?
+Who is your favorite author?
+What is your favorite podcast called?
+What is your favorite video game?
+What is your favorite game console?
+What is your favorite board game?
+What is your main comfort movie?
+What is your favorite music album?
+What is your favorite decade of music?
+What is your favorite instrument?
+Where is your favorite concert city?
+What is the name of your favorite band?
+What is your favorite music genre?
+What genre of music do you like the least?
+What is your favorite word?
+What has your favorite soundtrack?
+What is your favorite city?
+What is your dream destination?
+What is your favorite country?
+What is your favorite beach called?
+What is the name of your favorite mountain?
+What season do you like the most?
+What weather do you enjoy the most?
+What weather do you dislike the most?
+What is your favorite road trip snack?
+What airline have you flown the most with?
+What is your favorite landmark?
+What is your favorite cuisine?
+What is your favorite fruit?
+What is your favorite vegetable?
+What is your favorite dessert?
+What is your favorite snack?
+What is your favorite soda?
+What fast food location do you visit the most?
+What is your go-to comfort food?
+What is your favorite ice cream flavor?
+What is your favorite spice?
+What is your favorite breakfast food?
+Are you an early bird or a night owl?
+What hobby do you enjoy the most?
+What is your favorite sport?
+What is your favorite sports team?
+What is your favorite workout?
+What is your favorite color?
+What is your favorite scent?
+What is your favorite holiday?
+What is your favorite weekday?
+What app do you spend the most time on?
+What clothing brand do you wear the most?
+What is your favorite shoe brand?
+What is your favorite car brand?
+What is your favorite tech brand?
+Are you an introvert, extrovert, or an ambivert?
+What is your favorite personality trait?
+What is your least favorite personality trait?
+What is your favorite way to relax?
+What is your biggest fear? (1–2 words)
+What or who is your biggest motivator?
+What is your favorite superpower?
+What is your favorite element? (fire, water, etc.)
+What is your favorite time of day?
+What year holds the best memories for you?
+What is your favorite animal?
+What is your favorite mythical creature?
+What is your favorite cartoon character?
+What is your favorite fictional universe?
+What is your favorite aesthetic?
+What was your favorite hobby as a kid?
+What is/was your favorite school subject?
+What is your favorite pizza topping?
+What is your favorite flower?
+What is your favorite tree?
+What is your favorite gemstone?
+What is your favorite outdoor activity?
+What outdoor activity do you dislike the most?
+What is your favorite indoor activity?
+What indoor activity do you dislike the most?
+What activity brings you the most comfort?
+What is your dream job?
+What is your dream car?
+What is your dream house style?
+What was your Favorite childhood toy?
+What is your favorite memory location?
+What is your favorite motivational word?
+What is one of your guilty pleasures?
+What is your favorite snack brand?
+What is your favorite luxury brand?
+What is your favorite fictional city?
+Who is your favorite quote author?
+What is your favorite art style?
+What is your favorite museum named?
+What is your favorite festival called?
+Who is your favorite historical figure?
+What is the name of your favorite inventor?
+What is the name of your favorite athlete?
