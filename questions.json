@@ -1,74 +1,56 @@
 {
-    "question_1": {
-      "label": "What is your name?",
-      "id": "name"
-    },
-    "question_2": {
-      "label": "What is your favorite color?",
-      "id": "color"
-    },
-    "question_3": {
-      "label": "What is your favorite food?",
-      "id": "food"
-    },
-    "question_4": {
-      "label": "What is the street you live on?",
-      "id": "street"
-    },
-    "question_5": {
-      "label": "What is a town/city you have lived in?",
-      "id": "location"
-    },
-    "question_6": {
-        "label": "What is an animal you like?",
-        "id": "animal"
-    },
-    "question_7": {
-        "label": "What is your dream job?",
-        "id": "job"
-    },
-    "question_8": {
-        "label": "What is your favorite hobby?",
-        "id": "hobby"
-    },
-    "question_9": {
-        "label": "What is a favorite movie or TV show?",
-        "id": "media"
-    },
-    "question_10": {
-        "label": "What is your favorite book?",
-        "id": "book"
-    },
-    "question_11": {
-        "label": "What is your favorite season?",
-        "id": "season"
-    },
-    "question_12": {
-        "label": "What is a memorable place you have visited?",
-        "id": "memorable_place"
-    },
-    "question_13": {
-        "label": "What is your favorite song or musician?",
-        "id": "music"
-    },
-    "question_14": {
-        "label": "What is a nickname you've had?",
-        "id": "nickname"
-    },
-    "question_15": {
-        "label": "What is a skill you’d like to learn?",
-        "id": "skill"
-    },
-    "question_16": {
-        "label": "What is your favorite dessert?",
-        "id": "dessert"
-    },
-    "question_17": {
-        "label": "What is your favorite sport or activity?",
-        "id": "sport"
-    },
-    "question_18": {
-        "label": "What is your favorite quote or saying?",
-        "id": "quote"
-    }
+    "question_1": {"label": "What is your name?", "id": "name"},
+    "question_2": {"label": "What is your favorite color?", "id": "color"},
+    "question_3": {"label": "What is your favorite food?", "id": "food"},
+    "question_4": {"label": "What is the street you live on?", "id": "street"},
+    "question_5": {"label": "What is a town/city you have lived in?", "id": "location"},
+    "question_6": {"label": "What is an animal you like?", "id": "animal"},
+    "question_7": {"label": "What is your dream job?", "id": "job"},
+    "question_8": {"label": "What is your favorite hobby?", "id": "hobby"},
+    "question_9": {"label": "What is a favorite movie or TV show?", "id": "media"},
+    "question_10": {"label": "What is your favorite book?", "id": "book"},
+    "question_11": {"label": "What is your favorite season?", "id": "season"},
+    "question_12": {"label": "What is your favorite number?", "id": "number"},
+    "question_13": {"label": "What is a memorable place you have visited?", "id": "memorable_place"},
+    "question_14": {"label": "What is your favorite song or musician?", "id": "music"},
+    "question_15": {"label": "What is a nickname you've had?", "id": "nickname"},
+    "question_16": {"label": "What is a word you use frequently?", "id": "frequent_word"},
+    "question_17": {"label": "What is a skill you’d like to learn?", "id": "skill"},
+    "question_18": {"label": "What is your favorite dessert?", "id": "dessert"},
+    "question_19": {"label": "What is your favorite sport or activity?", "id": "sport"},
+    "question_20": {"label": "What is your favorite quote or saying?", "id": "quote"},
+    "question_21": {"label": "What was your first pet's name?", "id": "first_pet"},
+    "question_22": {"label": "What is your favorite fruit?", "id": "fruit"},
+    "question_23": {"label": "What is your favorite vegetable?", "id": "vegetable"},
+    "question_24": {"label": "What is your favorite drink?", "id": "drink"},
+    "question_25": {"label": "What is your favorite holiday?", "id": "holiday"},
+    "question_26": {"label": "Who is your favorite actor/actress?", "id": "actor"},
+    "question_27": {"label": "Who is your favorite author?", "id": "author"},
+    "question_28": {"label": "What is your favorite animal?", "id": "favorite_animal"},
+    "question_29": {"label": "What is your favorite place to relax?", "id": "relax_place"},
+    "question_30": {"label": "What is a favorite childhood memory?", "id": "childhood_memory"},
+    "question_31": {"label": "What is a city you want to visit?", "id": "dream_city"},
+    "question_32": {"label": "What is your favorite ice cream flavor?", "id": "ice_cream"},
+    "question_33": {"label": "What is your favorite holiday destination?", "id": "holiday_dest"},
+    "question_34": {"label": "What is your favorite beverage?", "id": "beverage"},
+    "question_35": {"label": "What is a language you’d like to learn?", "id": "language"},
+    "question_36": {"label": "What is your favorite board game?", "id": "board_game"},
+    "question_37": {"label": "What is your favorite childhood toy?", "id": "child_toy"},
+    "question_38": {"label": "What is your favorite superhero?", "id": "superhero"},
+    "question_39": {"label": "What is your favorite cartoon?", "id": "cartoon"},
+    "question_40": {"label": "What is a favorite outdoor activity?", "id": "outdoor_activity"},
+    "question_41": {"label": "What is your favorite indoor activity?", "id": "indoor_activity"},
+    "question_42": {"label": "What is your favorite restaurant?", "id": "restaurant"},
+    "question_43": {"label": "What is your favorite ice cream topping?", "id": "ice_cream_topping"},
+    "question_44": {"label": "What is your favorite TV channel?", "id": "tv_channel"},
+    "question_45": {"label": "What is your favorite app or website?", "id": "app_website"},
+    "question_46": {"label": "What is your favorite snack?", "id": "snack"},
+    "question_47": {"label": "What is your favorite candy?", "id": "candy"},
+    "question_48": {"label": "What is a memorable date for you?", "id": "memorable_date"},
+    "question_49": {"label": "What is your favorite quote from a movie?", "id": "movie_quote"},
+    "question_50": {"label": "What is a favorite childhood game?", "id": "child_game"},
+    "question_51": {"label": "What is your favorite type of music?", "id": "music_type"},
+    "question_52": {"label": "What is your favorite fictional character?", "id": "fictional_character"},
+    "question_53": {"label": "What is a habit you have?", "id": "habit"},
+    "question_54": {"label": "What is your favorite weather?", "id": "weather"}
   }
