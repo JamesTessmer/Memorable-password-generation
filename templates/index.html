@@ -16,14 +16,27 @@
             text-align: center;
         }
         .settings {
-        border-bottom: 1px solid #ddd;
-        margin-bottom: 20px;
-        padding-bottom: 15px;
-    }
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+        }
+        .how-to {
+            border-bottom: 1px solid #ddd;
+            margin: 0 auto 20px auto;  /* top/bottom:20px, auto left/right to center */
+            padding-bottom: 15px;
+            max-width: 400px;          /* match the width of your other elements */
+            text-align: left;          /* optional: keeps text left-aligned */
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <h3>How to use this tool</h3>
+        <div class="how-to">
+            This password generator facilitates creation of secure and memorable passwords. <br>
+            The tool works by taking your answers to questions, slightly modifying those answers, and then returning them to you as a formatted password. <br>
+            You can adjust the number of questions displayed and roughly hw many modifications are made to your answers in the settings section.
+        </div>
         <!-- Settings for complexity and number of questions -->
         <div class="settings">
             <h3>Settings</h3>
@@ -48,7 +61,7 @@
                 </button>
             </form>
         </div>
-
+        <h3>Questions</h3>
         <!-- Display questions -->
         <form method="POST">
             {% for q in questions %}

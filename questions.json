@@ -1,7 +1,7 @@
 {
     "question_1": {
       "label": "What is your name?",
-      "id": "id"
+      "id": "name"
     },
     "question_2": {
       "label": "What is your favorite color?",
@@ -16,7 +16,7 @@
       "id": "street"
     },
     "question_5": {
-      "label": "Where are you from?",
+      "label": "What is a town/city you have lived in?",
       "id": "location"
     },
     "question_6": {
