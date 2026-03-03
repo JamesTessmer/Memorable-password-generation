@@ -21,11 +21,51 @@ join_chars = ['-','_','+','&','$','#','@','!','%','^','*','=']
 def generate_questions(num_questions: int):
     return random.sample(questions, num_questions)
 
+num_changes = {'a': '4', 'b': '8', 'e': '3', 'g': '6', 'i': '1', 'o': '0', 's': '5', 't': '7', 'z': '2'}
+symbol_changes = {'a': '@', 'c': '(', 'h': '#', 's': '$', 't': '+'}
+
+# Randomize the characters in the password with a given percentage (chance * 10)
+def randomize_characters(password: str, chance: int):
+    new = ""
+    for character in password:
+        if random.randrange(1, 11) <= chance and character.isalpha():
+            # Change the character
+            # Make lowercase for repeated pulls
+            char = character.lower()
+            if char in num_changes and char in symbol_changes:
+                # Random chance between swapping case, making the letter a number, and making the letter a symbol
+                rand = random.randrange(3)
+                if rand == 0:
+                    new = new + character.swapcase()
+                elif rand == 1:
+                    new = new + num_changes[char]
+                else:
+                    new = new + symbol_changes[char]
+            elif char in num_changes:
+                # Random chance between swapping case and making the letter a number
+                if random.randrange(2) == 0:
+                    new = new + character.swapcase()
+                else:
+                    new = new + num_changes[char]
+            elif char in symbol_changes:
+                # Random chance between swapping case and making the letter a symbol
+                if random.randrange(2) == 0:
+                    new = new + character.swapcase()
+                else:
+                    new = new + symbol_changes[char]
+            else:
+                # No special case, so change case of the letter
+                new = new + character.swapcase()
+        else:
+            # Don't change the character (it's not a letter)
+            new = new + character
+    return new
+
 #generate a password based on user answers to questions, with complexity adding varying characters
 def generate_password(answers: dict, complexity: int):
     password = ""
     for val in answers.values():
-        password = password + random.choice(join_chars) + val
+        password = password + random.choice(join_chars) + randomize_characters(val, complexity)
     #replace white space characters since most websites, pages, etc. don't allow them
     password = password.replace(" ","")
     return password
