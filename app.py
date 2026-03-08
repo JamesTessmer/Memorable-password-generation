@@ -9,7 +9,7 @@ import string
 app = Flask(__name__)
 
 load_dotenv()
-app.secret_key = os.getenv("FLASK_APP_KEY") #you'll need to make a .env file with this variable
+app.secret_key = os.getenv("FLASK_APP_KEY")
 
 #read in questions
 questions = []
@@ -72,6 +72,7 @@ def generate_password(answers: dict, complexity: int):
     password = password.replace(" ","")
     return password
 
+#calculate and display entropy of the generated password
 def calculate_entropy(password):
     if not password:
         return 0

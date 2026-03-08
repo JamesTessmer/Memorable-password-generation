@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Super Mega Password Generator 5000</title>
+    <title>Memorable Password Generator</title>
     <style>
         body {
             margin: 0;
@@ -14,11 +14,6 @@
     
         .container {
             text-align: center;
-        }
-        .settings {
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
         }
         .how-to {
             border-bottom: 1px solid #ddd;
@@ -39,30 +34,49 @@
     <div class="container">
         <h3>How to use this tool</h3>
         <div class="how-to">
-            This password generator facilitates creation of secure and memorable passwords. <br>
-            The tool works by taking your answers to questions, slightly modifying those answers, and then returning them to you as a formatted password. <br>
-            You can adjust the number of questions displayed and roughly hw many modifications are made to your answers in the settings section. <br>
-            Password length does more for security than complexity, so try out a mix of settings to see how the password strength changes!
+            <ul>
+                <li>
+                    <span>1</span>
+                    <span>Choose how many questions to answer and your desired complexity level in Settings.</span>
+                </li>
+                <li>
+                    <span>2</span>
+                    <span>Answer the questions, your answers will be used to generate the password so it's best to answer honestly.</span>
+                </li>
+                <li>
+                    <span>3</span>
+                    <span>Click <strong>Generate</strong>. Your answers are slightly modified and combined into a formatted password.</span>
+                </li>
+                <li>
+                    <span>4</span>
+                    <span>Password length does more for security than complexity, so experiment with both settings!</span>
+                </li>
+            </ul>
         </div>
         <!-- Settings for complexity and number of questions -->
-        <div class="settings">
-            <h3>Settings</h3>
-
+        <div>
+            <div>
+                <h3>Settings</h3>
+            </div>
             <form method="POST">
-                <label>Number of Questions:</label><br>
-                <select name="num_questions" required>
-                    {% for i in range(1, 11) %}
-                        <option value="{{ i }}" {% if i == num_questions %}selected{% endif %}>{{ i }}</option>
-                    {% endfor %}
-                </select><br><br>
-            
-                <label>Password Complexity (1–10):</label><br>
-                <select name="complexity" required>
-                    {% for i in range(1, 11) %}
-                        <option value="{{ i }}" {% if i == complexity %}selected{% endif %}>{{ i }}</option>
-                    {% endfor %}
-                </select><br><br>
-            
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div style="margin-bottom: 8px;">
+                        <label>Number of Questions</label>
+                        <select name="num_questions" required>
+                            {% for i in range(1, 11) %}
+                                <option value="{{ i }}" {% if i == num_questions %}selected{% endif %}>{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 8px;">
+                        <label>Complexity (0–10)</label>
+                        <select name="complexity" required>
+                            {% for i in range(0, 11) %}
+                                <option value="{{ i }}" {% if i == complexity %}selected{% endif %}>{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
                 <button type="submit" name="action" value="update_settings">
                     Update Settings
                 </button>
