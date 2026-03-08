@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 import json
 import random
 import os
+import math
+import string
 
 app = Flask(__name__)
 
@@ -15,7 +17,7 @@ with open("questions.json", "r") as f:
     data = json.load(f)
     questions = list(data.values())
 
-join_chars = ['-','_','+','&','$','#','@','!','%','^','*','=']
+join_chars = ['-','_','+','&','$','#','@','!','%','^','*','=','?','>','<',',','.']
     
 #randomly select x questions to show based on user input
 def generate_questions(num_questions: int):
@@ -29,6 +31,33 @@ def generate_password(answers: dict, complexity: int):
     #replace white space characters since most websites, pages, etc. don't allow them
     password = password.replace(" ","")
     return password
+
+def calculate_entropy(password):
+    if not password:
+        return 0
+    
+    # Set pool of characters
+    charset = 0
+    if any(c in string.ascii_lowercase for c in password):
+        charset += 26
+    if any(c in string.ascii_uppercase for c in password):
+        charset += 26
+    if any(c in string.digits for c in password):
+        charset += 10
+    if any(c in string.punctuation for c in password):
+        charset += 32 # Common punctuation/special chars
+    
+    # Base case for something funky happening
+    if charset == 0:
+        charset = 1
+        
+    # entropy = L * log2(R)
+    length = len(password)
+    entropy = length * math.log2(charset)
+    
+    #round the value for displaying
+    return round(entropy, 2)
+    
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -66,7 +95,8 @@ def index():
                                    questions=session["questions"],
                                    num_questions=session["num_questions"],
                                    complexity=session["complexity"],
-                                   password=None)
+                                   password=None,
+                                   entropy=None)
 
         # If Reset button was pressed then regenerate questions and remove password
         elif request.form.get("action") == "reset":
@@ -75,17 +105,20 @@ def index():
                                    questions=session["questions"],
                                    num_questions=session["num_questions"],
                                    complexity=session["complexity"],
-                                   password=None)
+                                   password=None,
+                                   entropy=None)
 
         # If Submit button was pressed we process answers in the text boxes
         elif request.form.get("action") == "submit":
             answers = {q["id"]: request.form.get(q["id"]) for q in questions}
             password = generate_password(answers, session['complexity'])
+            entropy = calculate_entropy(password)
             return render_template("index.html",
                                    questions=session["questions"],
                                    num_questions=session["num_questions"],
                                    complexity=session["complexity"],
-                                   password=password)
+                                   password=password,
+                                   entropy=entropy)
 
     return render_template("index.html",
                            questions=questions,

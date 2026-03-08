@@ -27,6 +27,12 @@
             max-width: 400px;          /* match the width of your other elements */
             text-align: left;          /* optional: keeps text left-aligned */
         }
+        .password-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
@@ -35,7 +41,8 @@
         <div class="how-to">
             This password generator facilitates creation of secure and memorable passwords. <br>
             The tool works by taking your answers to questions, slightly modifying those answers, and then returning them to you as a formatted password. <br>
-            You can adjust the number of questions displayed and roughly hw many modifications are made to your answers in the settings section.
+            You can adjust the number of questions displayed and roughly hw many modifications are made to your answers in the settings section. <br>
+            Password length does more for security than complexity, so try out a mix of settings to see how the password strength changes!
         </div>
         <!-- Settings for complexity and number of questions -->
         <div class="settings">
@@ -79,12 +86,20 @@
                 Reset
             </button>
         </form>
-        <!--display the password after user hits submit -->
+        <!--display the password and password strength after user hits submit -->
         {% if password %}
-            <h2>Your generated password:</h2>
-            <p>{{ password }}</p>
+            <h2>Your Generated Password</h2>
+            <div class="password-info">
+                <h4>Password:</h4> <span style="font-family: monospace">{{ password }}</span>
+            </div>
+            <div class="password-info">
+                <h4>Bits of Entropy:</h4> <span>{{ entropy }}</span>
+            </div>
         {% endif %}
+    
+    
     </div>
+
 
 </body>
 </html>
