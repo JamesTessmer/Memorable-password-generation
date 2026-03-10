@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, session
 from dotenv import load_dotenv
 import json
-import random
+import secrets #used for password generation things
+import random #used for generating question list
 import os
 import math
 import string
@@ -30,13 +31,13 @@ symbol_changes = {'a': '@', 'c': '(', 'h': '#', 's': '$', 't': '+'}
 def randomize_characters(password: str, chance: int):
     new = ""
     for character in password:
-        if random.randrange(1, 11) <= chance and character.isalpha():
+        if secrets.randbelow(10) + 1 <= chance and character.isalpha():
             # Change the character
             # Make lowercase for repeated pulls
             char = character.lower()
             if char in num_changes and char in symbol_changes:
                 # Random chance between swapping case, making the letter a number, and making the letter a symbol
-                rand = random.randrange(3)
+                rand = secrets.randbelow(3)
                 if rand == 0:
                     new = new + character.swapcase()
                 elif rand == 1:
@@ -45,13 +46,13 @@ def randomize_characters(password: str, chance: int):
                     new = new + symbol_changes[char]
             elif char in num_changes:
                 # Random chance between swapping case and making the letter a number
-                if random.randrange(2) == 0:
+                if secrets.randbelow(2) == 0:
                     new = new + character.swapcase()
                 else:
                     new = new + num_changes[char]
             elif char in symbol_changes:
                 # Random chance between swapping case and making the letter a symbol
-                if random.randrange(2) == 0:
+                if secrets.randbelow(2) == 0:
                     new = new + character.swapcase()
                 else:
                     new = new + symbol_changes[char]
@@ -67,7 +68,7 @@ def randomize_characters(password: str, chance: int):
 def generate_password(answers: dict, complexity: int):
     password = ""
     for val in answers.values():
-        password = password + random.choice(join_chars) + randomize_characters(val, complexity)
+        password = password + secrets.choice(join_chars) + randomize_characters(val, complexity)
     #replace white space characters since most websites, pages, etc. don't allow them
     password = password.replace(" ","")
     return password
@@ -123,7 +124,7 @@ def index():
                 session["num_questions"] = int(num_q) if num_q else 1
             except ValueError:
                 session["num_questions"] = 1
-
+            
             try:
                 session["complexity"] = int(complexity) if complexity else 1
             except ValueError:
