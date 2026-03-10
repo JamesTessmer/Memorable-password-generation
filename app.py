@@ -154,6 +154,7 @@ def index():
         elif request.form.get("action") == "submit":
             answers = {q["id"]: request.form.get(q["id"]) for q in questions}
             password = generate_password(answers, session['complexity'])
+            del answers
             entropy = calculate_entropy(password)
             return render_template("index.html",
                                    questions=session["questions"],
