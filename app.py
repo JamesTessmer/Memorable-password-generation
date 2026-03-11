@@ -104,11 +104,11 @@ def calculate_entropy(password):
 @app.route("/", methods=["GET", "POST"])
 def index():
     if "num_questions" not in session:
-        session["num_questions"] = 1
+        session["num_questions"] = 3
     if "complexity" not in session:
-        session["complexity"] = 1
+        session["complexity"] = 0
     if "questions" not in session:
-        session["questions"] = generate_questions(1)
+        session["questions"] = generate_questions(3)
 
     questions = session["questions"]
 
