@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, session
 from dotenv import load_dotenv
+from threading import Timer
+import webbrowser
 import json
 import secrets #used for password generation things
 import random #used for generating question list
@@ -167,5 +169,9 @@ def index():
                            questions=questions,
                            answers=None)
 
+def open_browser():
+    webbrowser.open_new("http://127.0.0.1:5000/")
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    Timer(1, open_browser).start()
+    app.run(port=5000, debug=False)
